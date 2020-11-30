@@ -6,8 +6,9 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import AddIcon from '@material-ui/icons/Add';
 import useStyles from './styles';
+import FirebaseService from '../../services/firebase';
 
-const NavBar = () => {
+const NavBar = ({ openModal }) => {
     const styles = useStyles();
 
     return (
@@ -20,7 +21,10 @@ const NavBar = () => {
                     <Typography variant="h6" className={styles.title}>
                         Add Images
                     </Typography>
-                    <Button color="inherit">Login</Button>
+                    <Button color="inherit" onClick={async () => await FirebaseService.createNewCustomer()}>Login</Button>
+                    <Button color="inherit" onClick={() => openModal(true)}>add Customer</Button>
+                    <Button color="inherit" onClick={() => openModal(true)}>Custommers Page</Button>
+                    <Button color="inherit" onClick={() => openModal(true)}>Photo Page</Button>
                 </Toolbar>
             </AppBar>
         </div>
