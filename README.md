@@ -1,3 +1,9 @@
+# Informações do desenvolvedor
+
+nome: Gustavo Prior Chiochetta
+email: gustavo.chiochetta751020@gmail.com
+teconologias utilizadas: Material UI, react-imgix, react-router-dom e bibliotecas do firebase.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
