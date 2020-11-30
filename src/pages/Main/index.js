@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
-import NavBar from '../../components/NavBar';
-import SimpleModal from '../../components/SimpleModal';
+import React, { useState, useEffect } from 'react';
 import CustomerTable from '../../components/CustomerTable';
+import { Link } from 'react-router-dom';
+import FirebaseService from '../../services/firebase';
 
 const Main = () => {
-    const [modalVisible, setModalVisible] = useState(false);
+    const [userIsSigned, setUserIsSigned] = useState(false);
+
+    const userSigned = async () => {
+        const isLoged = await FirebaseService.userIsLogged()
+        setUserIsSigned(!!isLoged);
+    };
+
+    useEffect(() => {
+        userSigned();
+    }, []);
+
     return (
         <div>
-            <NavBar openModal={setModalVisible} />
-            <SimpleModal modalVisible={modalVisible} setModalVisible={setModalVisible} />
-            <CustomerTable />
+            {userIsSigned ? (<CustomerTable />) : (
+                <div>Usuário não logado, faça login {(<Link to="/">aqui</Link>)}</div>
+            )}
+
         </div>
 
     );

@@ -1,6 +1,21 @@
-import firebase from 'firebase';
+import firebase from '../firebase-config';
 
 class FirebaseService {
+
+    async userIsLogged() {
+        const user = await firebase.auth().currentUser;
+        return user;
+    };
+
+    async saveImage(files) {
+        let file = files[0];
+        let storageRef = firebase.storage().ref(file.name);
+        let uploadTask = storageRef.put(file);
+        await uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED)
+    };
+    async logout() {
+        await firebase.auth().signOut();
+    }
 
     async authUser(email, password) {
         await firebase.auth().signInWithEmailAndPassword(email, password);
@@ -9,21 +24,6 @@ class FirebaseService {
     async createNewUser(email, password) {
         await firebase.auth().createUserWithEmailAndPassword(email, password);
     };
-
-    async initialize() {
-        const firebaseConfig = {
-            apiKey: "AIzaSyDrbgBPJRU-cvRmtwnCy-HayZPi5ul-3jE",
-            authDomain: "photo-store-fd99f.firebaseapp.com",
-            databaseURL: "https://photo-store-fd99f.firebaseio.com",
-            projectId: "photo-store-fd99f",
-            storageBucket: "photo-store-fd99f.appspot.com",
-            messagingSenderId: "1091268010305",
-            appId: "1:1091268010305:web:55374ae0e3db7ada4701c0"
-        };
-
-        await firebase.initializeApp(firebaseConfig);
-        console.log('inicializou');
-    }
 
     async createNewCustomer(name, lastName, cpf) {
         await firebase.firestore().collection('customers').add({
@@ -34,7 +34,6 @@ class FirebaseService {
     }
 
     async readData() {
-        this.initialize();
         let data = [];
         let customerObject = {};
         await firebase.firestore().collection('customers').get()

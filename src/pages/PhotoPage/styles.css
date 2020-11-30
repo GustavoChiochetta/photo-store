@@ -1,0 +1,17 @@
+.single-image-container {
+    width: 300px;
+    height: 300px;
+}
+
+.images-container {
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+.gallery {
+    display: grid;
+    overflow: hidden;
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+}

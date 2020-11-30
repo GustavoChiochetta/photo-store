@@ -3,6 +3,7 @@ import TextInput from '../TextInput';
 import Button from '../Button';
 import { useHistory } from 'react-router-dom';
 import FirebaseService from '../../services/firebase';
+import './style.css';
 
 const Form = () => {
     const [email, setEmail] = useState('');
@@ -39,9 +40,15 @@ const Form = () => {
 
     return (
         <form>
-            <TextInput label="Email" onChange={onChangeEmail} />
-            <TextInput label="Password" hidden onChange={onChangePassword} />
-            <Button label="login" onClick={login} />
+            <div className="input-container">
+                <TextInput label="Email" onChange={onChangeEmail} />
+            </div>
+            <div className="input-container">
+                <TextInput label="Password" hidden onChange={onChangePassword} />
+            </div>
+            <div className="input-container">
+                <Button label="login" onClick={login} />
+            </div>
         </form>
     );
 };
