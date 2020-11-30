@@ -53,6 +53,7 @@ const CustomerTable = () => {
                     </TableBody>
                 </Table>
             </TableContainer>
+            Atualize a pagina para ver as modificações
         </div>
     );
 };

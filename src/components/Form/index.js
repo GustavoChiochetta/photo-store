@@ -26,8 +26,7 @@ const Form = () => {
             await FirebaseService.authUser(email, password);
             history.push('/main');
         } catch (error) {
-            console.log('deu errado');
-            console.log(error);
+            alert('não foi possível fazer o login');
         }
     }
 

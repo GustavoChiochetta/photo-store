@@ -42,6 +42,10 @@ const SimpleModal = ({ modalVisible, setModalVisible }) => {
         userIsLogged();
     }, []);
 
+    useEffect(() => {
+        userIsLogged();
+    }, [modalVisible])
+
     return (
         <Modal
             open={modalVisible}
