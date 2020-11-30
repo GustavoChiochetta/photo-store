@@ -13,8 +13,10 @@ const NewCustomerForm = ({ closeModal }) => {
         try {
             await FirebaseService.createNewCustomer(name, lastName, cpf)
             closeModal();
+            alert('Cliente salvo com sucesso');
         } catch (error) {
             console.log(error);
+            alert('algo deu errado ao tentar salvar o cliente');
         }
     }
 

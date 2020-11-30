@@ -10,13 +10,14 @@ const Form = () => {
     const [password, setPassword] = useState('');
     const history = useHistory();
 
-    const createNewUser = () => {
+    const createNewUser = async () => {
         try {
-            FirebaseService.createNewUser(email, password);
-
+            await FirebaseService.createNewUser(email, password);
         } catch (error) {
             console.log(error);
+            alert('algo deu errado');
         }
+        alert('Usuario salvo com sucesso');
     };
 
     const login = async () => {
@@ -48,6 +49,7 @@ const Form = () => {
             </div>
             <div className="input-container">
                 <Button label="login" onClick={login} />
+                <Button label="Sign up" onClick={createNewUser} />
             </div>
         </form>
     );

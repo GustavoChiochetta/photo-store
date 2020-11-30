@@ -8,7 +8,12 @@ const AddImage = () => {
     const [file, setFile] = useState();
 
     const uploadPhoto = async () => {
-        await FirebaseService.saveImage(file);
+        try {
+            await FirebaseService.saveImage(file);
+        } catch (error) {
+            console.log(error);
+        }
+        alert('imagem salva');
     };
 
     const userSigned = async () => {

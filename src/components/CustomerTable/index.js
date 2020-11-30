@@ -20,6 +20,7 @@ const CustomerTable = () => {
             setCustomers(response);
         } catch (error) {
             console.log(error);
+            alert('algo deu errado ao tentar carregar os clientes');
         }
     };
 
